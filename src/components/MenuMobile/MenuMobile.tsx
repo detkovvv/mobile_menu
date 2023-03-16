@@ -21,7 +21,7 @@ const menu: IMenuItem[] = [
                         name: 'Еще меню 2',
                         link: '/about/company',
                     },
-                ]
+                ],
             },
             {
                 name: 'Команда',
@@ -34,7 +34,7 @@ const menu: IMenuItem[] = [
                         name: 'Еще меню',
                         link: '/about/company'
                     },
-                ]
+                ],
             },
         ],
     },
@@ -68,9 +68,11 @@ export const MenuMobile = (): JSX.Element => {
         <>
             <button onClick={() => setIsOpened(true)}>Открыть меню</button>
             <nav className={styles.menu} role='navigation'>
-                <div onClick={() => setIsOpened(false)} className={cn(styles.cover, {
-                    [styles.coverShow]: isOpened,
-                })}
+                <div
+                    onClick={() => setIsOpened(false)}
+                    className={cn(styles.cover, {
+                        [styles.coverShow]: isOpened,
+                    })}
                 />
                 <div className={cn(styles.mobileMenuBox, {
                     [styles.mobileMenuBoxShow]: isOpened,
@@ -78,29 +80,35 @@ export const MenuMobile = (): JSX.Element => {
                 >
                     <div className={styles.menuHeader}>
                         {level > 1 && (
-                            <button className={styles.backButton} onClick={backLevel}>
-                                <img src={ArrowIcon}/>
+                            <button className={styles.backButton} onClick={() => backLevel()}>
+                                <img src={ArrowIcon} />
                                 Назад
                             </button>
                         )}
                         {level === 1 && (<div className={styles.backButton}>Меню</div>)}
                         <button className={styles.closeButton} onClick={() => setIsOpened(false)}>
-                            <img src={CloseIcon}/>
+                            <img src={CloseIcon} />
                         </button>
                     </div>
                     <div className={styles.level}
-                         style={{transform: `translateX(calc(-100% * ${level - 1} -24px * ${level - 1})`}}>
+                         style={{transform: `translateX(calc(-100% * ${level - 1} -24px * ${level - 1}));`}}
+                    >
                         {currentMenu.map((item, i) => (
                             <div key={i}>
                                 {item.map((m, index) => (
                                     <div key={m.name}>
-                                        {m.children &&
+                                        {m.children && (
                                             <button className={styles.item}
                                                     onClick={() => selectLevel(level + 1, m.children)}>
                                                 {m.name}
                                                 <img src={ArrowBlueIcon}/>
-                                            </button>}
-                                        {m.link && <a className={styles.item} href={m.link}></a>}
+                                            </button>
+                                        )}
+                                        {m.link && (
+                                            <a className={styles.item} href={m.link}>
+                                                {m.name}
+                                            </a>
+                                        )}
                                     </div>
                                 ))}
                             </div>

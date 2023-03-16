@@ -20,11 +20,10 @@
     top: 0;
     width: 320px;
     height: 100vh;
-    margin: 0;
     padding: 76px 24px 24px 24px;
     background: white;
     box-shadow: 4px 4px 30px 5px rgba(0, 0, 0, 0.1);
-    transition-duration: 0.25S;
+    transition-duration: 0.25s;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -54,7 +53,7 @@
     font-size: 18px;
     font-weight: 400;
     line-height: 1.2;
-    color: #3f3d3d;
+    color: #050a5b;
     display: flex;
     align-items: center;
     gap: 4px;
